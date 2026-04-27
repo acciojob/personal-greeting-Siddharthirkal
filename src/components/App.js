@@ -1,13 +1,21 @@
+import React, { useState } from "react";
 
-import React from "react";
-import './../styles/App.css';
+export default function App() {
+  const [name, setName] = useState("");
 
-const App = () => {
   return (
-    <div>
-        {/* Do not remove the main div */}
-    </div>
-  )
-}
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h2>Personalized Greeting</h2>
 
-export default App
+      <input
+        type="text"
+        placeholder="Enter your name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+
+      {/* Show greeting only if input is not empty */}
+      {name.trim() !== "" && <h3>Hello {name}!</h3>}
+    </div>
+  );
+}
